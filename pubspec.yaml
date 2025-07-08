@@ -9,6 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sensors_plus: ^5.0.0
+  camera: ^0.11.1
+  permission_handler: ^11.3.1
 
 dev_dependencies:
   flutter_test:

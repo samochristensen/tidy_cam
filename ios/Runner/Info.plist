@@ -45,5 +45,9 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Need camera for preview</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Need motion sensors for tracking movement</string>
 </dict>
 </plist>
