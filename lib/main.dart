@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../services/camera_service.dart';
+import 'services/camera_service.dart';
 import 'routes.dart';
 
 void main() async {
@@ -19,8 +19,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'IMU + Camera App',
       theme: ThemeData(primarySwatch: Colors.blue),
-      initialRoute: Routes.home,
+      initialRoute: Routes.onboarding,
       routes: routes,
+      // Optional: handle unknown named routes gracefully
+      onUnknownRoute: (settings) => MaterialPageRoute(
+        builder: (ctx) =>
+            const Scaffold(body: Center(child: Text("Page not found"))),
+      ),
     );
   }
 }

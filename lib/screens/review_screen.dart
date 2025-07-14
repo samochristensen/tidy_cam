@@ -103,3 +103,8 @@ class _ReviewScreenState extends State<ReviewScreen> {
     );
   }
 }
+
+class ReviewScreenArgs {
+  final File imageFile;
+  ReviewScreenArgs(this.imageFile);
+}

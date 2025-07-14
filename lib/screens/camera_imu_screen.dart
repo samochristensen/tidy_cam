@@ -6,6 +6,7 @@ import 'package:sensors_plus/sensors_plus.dart';
 import '../services/camera_service.dart';
 import '../services/imu_service.dart';
 import '../services/photo_service.dart';
+import '../routes.dart';
 import './review_screen.dart';
 
 class CameraImuScreen extends StatefulWidget {
@@ -53,11 +54,12 @@ class _CameraImuScreenState extends State<CameraImuScreen> {
   Future<void> _onCapture() async {
     try {
       final raw = await cameraService.takePicture();
-      final saved = await PhotoService.savePhoto(raw);
+      final savedFile = await PhotoService.savePhoto(raw);
       if (!mounted) return;
-      Navigator.push(
+      Navigator.pushNamed(
         context,
-        MaterialPageRoute(builder: (_) => ReviewScreen(imageFile: saved)),
+        Routes.review,
+        arguments: ReviewScreenArgs(savedFile),
       );
     } catch (e) {
       debugPrint('Capture failed: $e');
