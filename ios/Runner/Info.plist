@@ -51,5 +51,9 @@
 	<string>This app needs access to the microphone for recording video with audio.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>Need motion sensors for tracking movement</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app requires access to your photo library to save photos.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>This app needs permission to add photos to your photo library.</string>
 </dict>
 </plist>
