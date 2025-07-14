@@ -44,16 +44,11 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
-    _accelSub = accelerometerEvents.listen((event) {
-      setState(() {
-        _accelerometer = event;
-      });
+    _accelSub = accelerometerEventStream().listen((event) {
+      setState(() => _accelerometer = event);
     });
-
-    _gyroSub = gyroscopeEvents.listen((event) {
-      setState(() {
-        _gyroscope = event;
-      });
+    _gyroSub = gyroscopeEventStream().listen((event) {
+      setState(() => _gyroscope = event);
     });
 
     if (_cameras.isNotEmpty) {
