@@ -46,7 +46,9 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Need camera for preview</string>
+	<string>This app needs access to the camera to capture images.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app needs access to the microphone for recording video with audio.</string>
 	<key>NSMotionUsageDescription</key>
 	<string>Need motion sensors for tracking movement</string>
 </dict>
