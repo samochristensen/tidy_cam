@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
-import 'services/camera_service.dart';
-import 'routes.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:logger/logger.dart';
+import 'screens/signup_screen.dart';
 
-void main() async {
+final logger = Logger();
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize available cameras once (shared globally)
-  await CameraService.initializeCameras();
+  try {
+    await dotenv.load(fileName: ".env");
+    logger.i('SHOPIFY_DOMAIN: ${dotenv.env['SHOPIFY_DOMAIN']}');
+    logger.i(
+      'SHOPIFY_TOKEN: ${dotenv.env['SHOPIFY_TOKEN']?.substring(0, 8)}...',
+    );
+  } catch (e) {
+    logger.e("Failed to load .env file", error: e);
+  }
 
   runApp(const MyApp());
 }
@@ -17,15 +27,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'IMU + Camera App',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      initialRoute: Routes.onboarding,
-      routes: routes,
-      // Optional: handle unknown named routes gracefully
-      onUnknownRoute: (settings) => MaterialPageRoute(
-        builder: (ctx) =>
-            const Scaffold(body: Center(child: Text("Page not found"))),
+      title: 'Tidy Tool',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey),
+        useMaterial3: true,
       ),
+      home: SignupScreen(),
     );
   }
 }
